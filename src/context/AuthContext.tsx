@@ -50,7 +50,7 @@ export default function AuthContextProvider({
     try {
       setLoading(true);
       setError(null);
-      await axios.post("http://localhost:3000/api/register", userData);
+      await axios.post("https://amin-messenger-app.vercel.app/api/register", userData);
 
       router.push("/login");
     } catch (error) {
@@ -65,7 +65,7 @@ export default function AuthContextProvider({
     try {
       setLoading(true);
       setError(null);
-      const res = await axios.post("http://localhost:3000/api/login", userData);
+      const res = await axios.post("https://amin-messenger-app.vercel.app/api/login", userData);
       const data = res.data;
       setUser(data.userName);
       localStorage.setItem("userName", JSON.stringify(data.userName));
@@ -80,7 +80,7 @@ export default function AuthContextProvider({
   async function logout() {
     try {
       setLoading(true);
-      await axios.get("http://localhost:3000/api/logout");
+      await axios.get("https://amin-messenger-app.vercel.app/api/logout");
       setUser(null);
       router.push("/login");
       localStorage.removeItem("userName");

@@ -58,7 +58,7 @@ export default function MessagesContextProvider({
   const fetchConversations = useCallback(async function fetchConversations() {
     setIsLoading(true);
     try {
-      const res = await axios.get("/api/conversations");
+      const res = await axios.get("https://amin-messenger-app.vercel.app/api/conversations");
       setConversations(res.data);
     } catch (error) {
       console.error("Failed to fetch conversations", error);
@@ -71,7 +71,7 @@ export default function MessagesContextProvider({
     setIsLoading(true);
     try {
       setSelectedConversation(conversation);
-      const res = await axios.get(`/api/conversations/${conversation._id}`);
+      const res = await axios.get(`https://amin-messenger-app.vercel.app/api/conversations/${conversation._id}`);
       setMessages(res.data);
 
       // Mark as read

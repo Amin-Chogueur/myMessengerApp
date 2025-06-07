@@ -20,9 +20,12 @@ export default function MessagesPage() {
   const [content, setContent] = useState("");
   async function sendMessage() {
     try {
-      const res = await axios.post("http://localhost:3000/api/messages", {
-        content,
-      });
+      const res = await axios.post(
+        "https://amin-messenger-app.vercel.app/api/messages",
+        {
+          content,
+        }
+      );
       const data = res.data.message;
       const newMessage = {
         content: data.content,
@@ -41,7 +44,9 @@ export default function MessagesPage() {
     async function fetchConversations() {
       setIsLoading(true);
       try {
-        const res = await axios.get("/api/messages");
+        const res = await axios.get(
+          "https://amin-messenger-app.vercel.app/api/messages"
+        );
         setMessages(res.data);
       } catch (error) {
         console.error("Failed to fetch conversations", error);
